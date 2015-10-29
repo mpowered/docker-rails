@@ -11,9 +11,9 @@ CMD ["/sbin/my_init"]
 # Ensure nginx runs && remove default site
 RUN rm -f /etc/service/nginx/down && rm /etc/nginx/sites-enabled/default
 
-ADD config/docker/webapp.conf /etc/nginx/sites-enabled/webapp.conf
-ADD config/docker/gzip_max.conf /etc/nginx/conf.d/gzip_max.conf
-ADD config/docker/install-wkhtmltopdf.sh /sbin/install-wkhtmltopdf.sh
+ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf
+ADD gzip_max.conf /etc/nginx/conf.d/gzip_max.conf
+ADD install-wkhtmltopdf.sh /sbin/install-wkhtmltopdf.sh
 
 # Install wkhtmltopdf
 RUN apt-get update && \
