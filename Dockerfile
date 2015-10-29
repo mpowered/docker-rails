@@ -2,6 +2,8 @@ FROM phusion/passenger-ruby22
 
 # Set correct environment variables.
 ENV HOME /root
+ENV RAILS_ENV production
+ENV SIDEKIQ_CONCURRENCY 5
 
 # Use baseimage-docker's init system which will start nginx
 CMD ["/sbin/my_init"]
@@ -11,7 +13,6 @@ RUN rm -f /etc/service/nginx/down && rm /etc/nginx/sites-enabled/default
 
 ADD config/docker/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 ADD config/docker/gzip_max.conf /etc/nginx/conf.d/gzip_max.conf
-ADD config/docker/sidekiq.sh /home/app/webapp/sidekiq.sh
 ADD config/docker/install-wkhtmltopdf.sh /sbin/install-wkhtmltopdf.sh
 
 # Install wkhtmltopdf
