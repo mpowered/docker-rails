@@ -17,6 +17,9 @@ ADD install-wkhtmltopdf.sh /sbin/install-wkhtmltopdf.sh
 
 # Install wkhtmltopdf
 RUN apt-get update && \
+    apt-get install -y \
+    libqtwebkit-dev \
+    qt4-qmake && \
     /sbin/install-wkhtmltopdf.sh
 
 # Clean up unneeded files
