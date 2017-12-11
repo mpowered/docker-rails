@@ -1,5 +1,8 @@
 FROM phusion/passenger-ruby22
 
+# Updates in passenger-ruby22 install a version of rack that causes problems for our Rails 3 apps
+RUN gem uninstall -i /usr/local/rvm/gems/ruby-2.2.5@global rack
+
 # Set correct environment variables.
 ENV HOME /root
 ENV RAILS_ENV production
